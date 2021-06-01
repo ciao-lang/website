@@ -12,7 +12,7 @@ doc_structure :=
       'install',
       'documentation',
       'project',
-      %phony_link('bundles', url('/catalog_ui')),
+      phony_link('bundles', url('/catalog_ui')),
       'support'
     ].
 
