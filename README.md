@@ -28,6 +28,9 @@ ciao custom_run . dist
 This will prepare the website files under `CIAOROOT/build/site/`
 directory.
 
+To update the `cached_catalog.pl` file, execute
+`bundle_extra_info:gen_catalog`.
+
 ## Serving the website
 
 Use the `ciao-serve` command to start a simple HTTP server at
