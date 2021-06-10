@@ -15,21 +15,28 @@ The original sources (including alternative versions) of the logos and
 images in this repository are stored separately in the `ciao-artwork`
 repository.
 
-## Generation
+## Installation
 
-Use the following steps to generate an up-to-date website (fetch
-externals and update):
+This bundle requires a few additional steps to fetch external
+dependencies and prepare the website files under
+`CIAOROOT/build/site/` directory.
 
+First make sure that the `wui` bundle is built and installed:
 ```
-ciao custom_run . fetch_externals
-ciao custom_run . dist
+ciao custom_run wui fetch_externals
+ciao build --bin wui
+ciao custom_run wui dist
+```
+Then build and install the website:
+```
+ciao custom_run website fetch_externals
+ciao build --bin website
+ciao custom_run website dist
 ```
 
-This will prepare the website files under `CIAOROOT/build/site/`
-directory.
-
-To update the `cached_catalog.pl` file, execute
-`bundle_extra_info:gen_catalog`.
+NOTE: The metadata for the bundle catalog is pre-generated in the
+`cached_catalog.pl` file. Use `bundle_extra_info:gen_catalog` to
+generate it.
 
 ## Serving the website
 
