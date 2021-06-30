@@ -9,7 +9,7 @@
    inspect the available bundles in this Ciao installation. See the
    @tt{README.md} file for build and usage details.").
 
-:- include(catalog_ui(catalog_ui_config_auto)).
+:- include(ciao_website(website_config_auto)).
 
 :- use_module(library(aggregates), [findall/3]).
 :- use_module(library(bundle/bundle_info)).

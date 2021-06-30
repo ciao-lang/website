@@ -7,7 +7,7 @@ depends([
     % ciaoviz % TODO: make it optional
 ]).
 alias_paths([
-    ciao_website = '.',
+    ciao_website = 'src',
     catalog_ui = 'catalog_ui'
 ]).
 lib('catalog_ui').
