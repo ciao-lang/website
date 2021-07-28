@@ -9,9 +9,9 @@
 %  Ciao is a programming language that builds up from a logic-based
 %  simple kernel, and is designed to be extensible and modular. Its supports:
 %  
-%   - @bf{constraint} logic programming (and, in particular, @bf{Prolog}), 
+%   - @bf{constraint} logic programming (and, in particular, @bf{Prolog}, supporting the ISO-Prolog standard), 
 %   - different levels of modularity (from small to large scale):
-%     - @bf{modules} as (analysis-friendly) compilation units
+%     - @bf{modules} as (analysis-friendly) compilation units,
 %     - @bf{bundles} as collections of modules, 
 %   - @bf{packages} as modules implementing language extensions
 %     (syntactic definitions, compilation options, compiler plugins), 
@@ -25,7 +25,7 @@
 %  incremental compilation, global program analysis and static debugging
 %  and optimization (via source to source program transformation,
 %  CiaoPP preprocessor), a build automation system, documentation
-%  generator, debugger, and (Emacs-based) development environment.
+%  generator, debugger, and integrated development environment.
 
 % ---------------------------------------------------------------------------
 
