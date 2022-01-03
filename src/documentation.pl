@@ -9,8 +9,8 @@
 %  Ciao is a Prolog-based programming system. As introductory 
 %  material we recommend the following:
 %  
-%   - [The Art of Prolog](https://mitpress.mit.edu/books/art-prolog-second-edition) 
-%     (available as a [free PDF](https://www.dropbox.com/s/5pilbnmlx5nypmh/1408.pdf?dl=1)).
+%   - [The Art of Prolog](https://cliplab.org/~logalg/doc/The_Art_of_Prolog.pdf) 
+%     (Open Access from [MIT Press](https://mitpress.mit.edu/books/art-prolog-second-edition)).
 %   - [A course in Computational Logic](http://www.cliplab.org/logalg/): Pure LP, Prolog, Efficiency, CLP, Theory, etc.
 %   - [Warren's Abstract Machine: A Tutorial Reconstruction](http://wambook.sourceforge.net/)
 %     for the foundations of Prolog implementation (recommended read
