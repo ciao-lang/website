@@ -11,7 +11,7 @@
 %  
 %   - [The Art of Prolog](https://cliplab.org/~logalg/doc/The_Art_of_Prolog.pdf) 
 %     (Open Access from [MIT Press](https://mitpress.mit.edu/books/art-prolog-second-edition)).
-%   - [A course in Computational Logic](http://www.cliplab.org/logalg/): Pure LP, Prolog, Efficiency, CLP, Theory, etc.
+%   - [Course material in Computational Logic](http://www.cliplab.org/logalg/): Pure LP, Prolog, Efficiency, CLP, Theory, etc.
 %   - [Warren's Abstract Machine: A Tutorial Reconstruction](http://wambook.sourceforge.net/)
 %     for the foundations of Prolog implementation (recommended read
 %     for those interested in lower-level details of the operational
@@ -30,7 +30,7 @@
 %
 %  You can browse the available bundles and their manuals in the **[bundle catalog](/catalog_ui)**.
 %
-%  # Tutorials and Presentations
+%  # Some Tutorials and Presentations
 %
 %   - An @href{http://clip.dia.fi.upm.es/papers/hermenegildo11:ciao-design-tplp.pdf}{overview paper} on Ciao.
 %
