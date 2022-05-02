@@ -1,6 +1,17 @@
 :- module(_, [], [doccfg]).
 
-% Site definition (as an LPdoc doc)
+%! \title Ciao website configuration
+%
+%  This is LPdoc configuration to generate the Ciao website.
+
+% --------------------------------------------------------------------------
+%
+% TODO:
+%  - documentation.md:
+%    - manuals listed by hand! Not synchronized! Missing .pdf version
+%    - add playgrounds and list of bundles
+%
+% --------------------------------------------------------------------------
 
 :- use_module(library(bundle/bundle_paths), [bundle_path/3]).
 
@@ -8,12 +19,12 @@ filepath := ~bundle_path(website, 'src').
 %tmplpath := ~bundle_path(website, 'tmpl').
 
 doc_structure := 
-    'index'-[
-      'install',
-      'documentation',
-      'project',
-      phony_link('bundles', url('/catalog_ui')),
-      'support'
+    'index.md'-[
+      'install.md',
+      'documentation.md',
+      'project.md',
+      phony_link('bundles.md', url('/catalog_ui')),
+      'support.md'
     ].
 
 % No indices
@@ -25,10 +36,10 @@ doc_compopts := no_isoline|no_engmods|propmods|no_changelog|no_authors|no_biblio
 docformat := html. % we are a webpage!
 
 % TODO: port this manual
-allow_markdown := no.
+allow_markdown := yes.
 syntax_highlight := no.
 
-% ===========================================================================
+% -----------------------------------------------------------------------------
 
 % TODO: generalize? document
 html_layout := website_layout([
@@ -44,7 +55,7 @@ html_layout := website_layout([
 % (contains the CSS files, images, etc.)
 html_asset := ~bundle_path(website, 'skel').
 
-%-----------------------------------------------------------------------------
+% -----------------------------------------------------------------------------
 
 :- use_module(ciaobld(config_common), [site_root_dir/1]).
 
