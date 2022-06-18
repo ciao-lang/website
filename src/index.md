@@ -3,17 +3,19 @@
 Ciao is a programming language that builds up from a logic-based
 simple kernel, and is designed to be extensible and modular. Its supports:
 
- - **constraint** logic programming (and, in particular, **Prolog**, supporting the ISO-Prolog standard), 
+ - [**constraint**](/ciao/build/doc/ciao.html/ExtendLang.html) logic
+   programming (and, in particular, [**Prolog**](/ciao/build/doc/ciao.html/BasicLang.html), supporting the
+   [ISO-Prolog standard](/ciao/build/doc/ciao.html/ciaointro.html#ISO-Prolog%20compliance%20and%20extensibility),
  - different levels of modularity (from small to large scale):
-   - **modules** as (analysis-friendly) compilation units,
-   - **bundles** as collections of modules, 
- - **packages** as modules implementing language extensions
+   - [**modules**](/ciao/build/doc/ciao.html/modules.html) as (analysis-friendly) compilation units,
+   - [**bundles**](/ciao/build/doc/ciao.html/bundles_doc.html) as collections of modules, 
+ - [**packages**](/ciao/build/doc/ciao.html/packages.html) as modules implementing language extensions
    (syntactic definitions, compilation options, compiler plugins), 
- - **assertions** (as a homogeneous framework that allows static and
+ - [**assertions**](/ciao/build/doc/ciao.html/AssrtLang.html) (as a homogeneous framework that allows static and
    dynamic verification to work cooperatively in a unified way), 
- - **multiparadigm** constructs (meta-programming, higher-order,
+ - [**multiparadigm**](/ciao/build/doc/ciao.html/ExtendLang.html) features (meta-programming, higher-order,
    mutables, concurrency, functions, etc.) and interfacing with
-   **foreign** code.
+   [**foreign**](/ciao/build/doc/ciao.html/foreign_interface_doc.html) code.
 
 The system implements some advanced features such as separate and
 incremental compilation, global program analysis and static debugging
