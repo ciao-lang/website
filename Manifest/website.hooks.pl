@@ -57,7 +57,8 @@ gen_static_html :-
 
 '$builder_hook'(prepare_build_bin) :-
     ConfigFile = ~bundle_path(website, 'src/website_config_auto.pl'),
-    HasBundles = [
-        ciaoviz % (for catalog_ui)
-    ],
+    % HasBundles = [
+    %     ciaoviz % (for catalog_ui)
+    % ],
+    HasBundles = [],
     generate_config_auto(ConfigFile, HasBundles).

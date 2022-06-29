@@ -38,13 +38,23 @@ NOTE: The metadata for the bundle catalog is pre-generated in the
 `cached_catalog.pl` file. Use `bundle_extra_info:gen_catalog` to
 generate it.
 
-## Serving the website
+## Serving the website (browser-side dynamic content)
+
+Use any HTTP server with root at `CIAOROOT/build/site/`. This requires
+additional steps to build `ciaowasm` and `ciao_playground` bundles.
+
+```
+ciao build --grade=wasm website
+ciao install --grade=wasm website
+```
+
+## Serving the website (server-side dynamic content)
 
 Use the `ciao-serve` command to start a simple HTTP server at
-`http://localhost:8000` with support for dynamic content (like the
-download component). It can be customized to listen from another
-address and port or be combined with other HTTP servers a reverse
-proxy (see Deployment instructions later).
+`http://localhost:8000` with support for dynamic content. It can be
+customized to listen from another address and port or be combined with
+other HTTP servers a reverse proxy (see Deployment instructions
+later).
 
 Data from the dynamic components of the website will be locally stored
 at the `CIAOROOT/build/data/` directory.

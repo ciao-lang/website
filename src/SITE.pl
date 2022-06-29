@@ -23,8 +23,9 @@ doc_structure :=
       'install.md',
       'documentation.md',
       'project.md',
-      phony_link('bundles.md', url('/catalog_ui')),
-      'support.md'
+      phony_link('playground.md', url('/playground')),
+      % phony_link('bundles.md', url('/catalog_ui')), % (server-side dynamic version, use empty bundles.md)
+      'bundles.md'
     ].
 
 % No indices

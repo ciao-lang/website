@@ -10,7 +10,6 @@
 :- use_module(library(stream_utils), [file_to_string/2, string_to_file/2]).
 :- use_module(library(port_reify)).
 
-:- use_module(library(persdb/datadir), [ensure_datadir/2]).
 :- use_module(lpdoc(lpdoc_single_mod), [docfile_to_html_term/2]).
 
 :- export(render_docfile/2).

@@ -54,6 +54,16 @@ body {
   transform: scale(1.1);
 }
 
+/*
+html { --bg-img: unset; }
+html[data-theme='dark'] { --bg-img: linear-gradient(178deg, #22242a 0%, #23272c 50%, #23272c 100%); }
+body { background-color: var(--bg); background-image: var(--bg-img); }
+.lpdoc-title { background-color: unset; }
+div.lpdoc-main { background-color: unset; }
+div.lpdoc-page { background-color: unset; }
+div.lpdoc-footer { background-color: unset; }
+*/
+
 /* --------------------------------------------------------------------------- */
 /* Horizontal menu */
 
@@ -104,11 +114,11 @@ a.lpdoc-unselmenu:hover {
 .lpdoc-searchmenu {
 }
 a.lpdoc-searchmenu {
-    padding: 4px 8px 4px 8px;
+    /* padding: 4px 8px 4px 8px; */
     margin: 0px;
     display: block;
     text-decoration: none;
-    font-size: 24px;
+    /* font-size: 24px; */
 }
 a.lpdoc-searchmenu:visited, a.lpdoc-searchmenu:active, a.lpdoc-searchmenu:link {
     color: var(--sidebar-link);
@@ -160,6 +170,20 @@ div.lpdoc-main {
     padding-bottom: 0px;
     padding-left: 64px;
     padding-right: 64px;
+}
+
+.lpdoc-cartouche {
+    color: var(--cartouche-fg);
+}
+.lpdoc-cartouche > ul {
+    margin: 8px;
+    padding: 0px 4px 0px 4px;
+    list-style-type: none;
+}
+.lpdoc-cartouche > ul li:before {
+    content: '\00BB';
+    color: var(--cartouche-fg);
+    margin: 0 4px 0 0;
 }
 
 /* --------------------------------------------------------------------------- */

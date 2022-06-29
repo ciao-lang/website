@@ -23,7 +23,7 @@ curl https://ciao-lang.org/boot -sSfL | sh
 Please report as [issues](https://github.com/ciao-lang/ciao/issues)
 any problems found during the installation process.
 
-You can explore additional components at the **[bundle catalog](/catalog_ui)**
+You can explore additional components at the **[bundle catalog](/bundles.html)**
 (including links to documentation and source code
 repositories) and install them with the `ciao get BUNDLENAME` command.
 

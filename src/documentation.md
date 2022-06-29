@@ -1,7 +1,8 @@
 \title Documentation
 
-Ciao is a Prolog-based programming system. As introductory 
-material we recommend the following:
+Ciao is a **Prolog** system that includes many advanced features and
+extensions. As introductory material we recommend the following
+resources:
 
  - [The Art of Prolog](https://cliplab.org/~logalg/doc/The_Art_of_Prolog.pdf) 
    (Open Access from [MIT Press](https://mitpress.mit.edu/books/art-prolog-second-edition)).
@@ -14,7 +15,7 @@ material we recommend the following:
 
 # Reference Manuals
 
-Manuals for the main bundles of Ciao:
+The following are the reference manuals for the main Ciao components:
 
  - [ciao](/ciao/build/doc/ciao.html/): compiler, toplevel/debugger, core libraries, extensions, etc.
  - [ciao_builder](/ciao/build/doc/ciao_builder.html/): build system.
@@ -22,7 +23,8 @@ Manuals for the main bundles of Ciao:
  - [ciaopp](/ciao/build/doc/ciaopp.html/): analysis, verification, (static) debugging, and optimization.
  - [ciaodbg](/ciao/build/doc/ciaodbg.html/): testing, profiling, and (dynamic) embedded debugging.
 
-You can browse the available bundles and their manuals in the **[bundle catalog](/catalog_ui)**.
+You can browse the available bundles and their manuals in the
+**[bundle catalog](/bundles.html)**.
 
 # Some Tutorials and Presentations
 
@@ -38,6 +40,20 @@ You can browse the available bundles and their manuals in the **[bundle catalog]
  - Other @href{http://clip.dia.fi.upm.es/papers/RuleML11_slides.pdf}{introductory slides on Ciao, CiaoPP}.
 
  - Original @href{http://clip.dia.fi.upm.es/~logalg/slides/G_lpdoc_cl2000.pdf}{tutorial slides on LPdoc}.
+
+# Forums and mailing lists
+
+The following forums and mailing lists are available:
+
+ - @href{https://github.com/ciao-lang/ciao/discussions}{discussions at GitHub} (new!)
+
+ - @email{ciao-users@@cliplab.org} (@href{https://cliplab.org/Mail/ciao-users/}{archives})
+
+   Ciao questions (in English) whose answer may be of general
+   interest, announcements of relevant updates, bug fixes, etc.
+
+   You can
+   @href{https://cliplab.org/mailman/listinfo/ciao-users}{subscribe to this mailing list}.
 
 # Publications
 
