@@ -38,9 +38,10 @@ info(ciaopp,tags([main])).
 info(ciaopp,title("The CiaoPP Program Processor")).
 info(ciaopp,desc("# The CiaoPP Program Processor
 
-CiaoPP is an program processor framework for
+CiaoPP is a program processor framework for
 [Ciao](https://github.com/ciao-lang/ciao). CiaoPP performs a number of
-program debugging, analysis, and source-to-source transformations:
+program debugging, analysis, and source-to-source transformation
+tasks:
 
  - **Inference of properties** of the predicates and literals of the
    program (*types*, *modes* and other *variable instantiation*
@@ -66,15 +67,19 @@ is in turn also used by the Ciao system documentation generator,
 `lpdoc`.
 
 This repository contains the generic preprocessor framework together
-with some basic domains, transformations, and language support. Other
-features are distributed as separate bundles.
+with some basic analyses, transformations, and language support. Other
+features (including support for a variety of programming languages)
+are distributed as separate bundles. 
 
 CiaoPP is distributed under the GNU general public license.
 ")).
 info(ciaopp,deps(ciaodbg)).
+info(ciaopp,deps(ciaotest)).
 info(ciaopp,deps(typeslib)).
 info(ciaopp,deps(ciao_ppl)).
 info(ciaopp,deps(ciao_gsl)).
+info(ciaopp,deps(ciaopp_fpnum)).
+info(ciaopp,deps(ciaopp_bshare)).
 info(ciaopp,deps(ciaopp_llvm)).
 info(ciaopp,deps(davinci)).
 info(ciaopp,manuals(ciaopp,'ciaopp.html')).
@@ -110,6 +115,78 @@ to Prolog Commons.
 The modules use the `library(dialect/yap)` compatibility mode.
 ")).
 info(yap_libs,url('https://github.com/ciao-lang/yap_libs')).
+bundle(ciao_playground).
+info(ciao_playground,tags([])).
+info(ciao_playground,title("The Ciao Playground")).
+info(ciao_playground,desc("# The Ciao Playground
+
+This bundle implements the Ciao Playground. It supports local
+(browser-side) execution of Ciao code based on `ciaowasm` and offers a
+code edition based on the [Monaco
+Editor](https://microsoft.github.io/monaco-editor/) component.
+
+`ciaowasm` is a Ciao engine compiled to the WebAssembly platform using
+[Emscripten](https://emscripten.org), together with a JavaScript
+client layer.
+
+## Build instructions
+
+Steps to build this bundle:
+
+ - Install the `ciaowasm` bundle (see `ciaowasm/README.md`)
+ - Install external dependencies: `ciao custom_run ciao_playground fetch_externals`
+   (which use [NPM](https://www.npmjs.com/))
+ - Prepare and pack bundles at the `build/site/` area:
+```
+ciao install --grade=wasm ciaowasm # (if not done before)
+ciao install --grade=wasm core
+ciao install --grade=wasm builder
+ciao install --grade=wasm ciaodbg
+ciao install ciao_playground # (wasm grade not needed)
+```
+ - Finish the distribution at `build/site/`:
+```
+ciao custom_run ciao_playground dist
+```
+
+You may use the `build.sh` to automate all the steps.
+
+## Usage 
+
+Use `ciao-serve-mt` (`ciao-serve` will not work, see **NOTE** below)
+expose the current workspaces to the web server and browse
+`http://localhost:8001/playground/`.
+
+**NOTE**: Loading WASM-based applications from single threaded HTTP
+servers seem to cause deadlocks in some browsers (it is not our
+fault). The `ciao-serve-mt` module wraps a Python3 multi-threaded HTTP
+server (which seems to work properly) with a `ciao-serve`-like
+interface.
+
+> **NOTE**: When developing, it is sometimes convenient to [bypass your
+cache](https://en.wikipedia.org/wiki/Wikipedia:Bypass_your_cache).
+
+## Documentation
+
+This bundle includes an LPdoc [user's manual](doc/reference/) available
+as the `ciao_playground` manual (use `ciao build --docs ciao_playground`
+to (re)generate it). Browse 
+http://localhost:8001/ciao/build/doc/ciao_playground.html to view it.
+
+JavaScript code is documented separatelly using
+[JSDoc](https://jsdoc.app). You may generate it using:
+```
+cd src/; jsdoc -c jsdoc-conf.json
+```
+The HTML documentation is generated in the `doc-js/` folder.
+Install `jsdoc` with `npm install -g jsdoc` (or `npm install
+--save-dev jsdoc` locally).
+")).
+info(ciao_playground,deps(ciaowasm)).
+info(ciao_playground,deps(builder)).
+info(ciao_playground,deps(ciaodbg)).
+info(ciao_playground,manuals(ciao_playground,'ciao_playground.html')).
+info(ciao_playground,url('https://github.com/ciao-lang/ciao_playground')).
 bundle(ciao_chr).
 info(ciao_chr,tags([])).
 info(ciao_chr,title("CHR for Ciao")).
@@ -530,36 +607,53 @@ The original sources (including alternative versions) of the logos and
 images in this repository are stored separately in the `ciao-artwork`
 repository.
 
-## Generation
+## Installation
 
-Use the following steps to generate an up-to-date website (fetch
-externals and update):
+This bundle requires a few additional steps to fetch external
+dependencies and prepare the website files under
+`CIAOROOT/build/site/` directory.
+
+First make sure that the `wui` bundle is built and installed:
+```
+ciao custom_run wui fetch_externals
+ciao build --bin wui
+ciao custom_run wui dist
+```
+Then build and install the website:
+```
+ciao custom_run website fetch_externals
+ciao build --bin website
+ciao custom_run website dist
+```
+
+NOTE: The metadata for the bundle catalog is pre-generated in the
+`cached_catalog.pl` file. Use `bundle_extra_info:gen_catalog` to
+generate it.
+
+## Serving the website (browser-side dynamic content)
+
+Use any HTTP server with root at `CIAOROOT/build/site/`. This requires
+additional steps to build `ciaowasm` and `ciao_playground` bundles.
 
 ```
-ciao custom_run . fetch_externals
-ciao custom_run . dist
+ciao build --grade=wasm website
+ciao install --grade=wasm website
 ```
 
-This will prepare the website files under `CIAOROOT/build/site/`
-directory.
-
-To update the `cached_catalog.pl` file, execute
-`bundle_extra_info:gen_catalog`.
-
-## Serving the website
+## Serving the website (server-side dynamic content)
 
 Use the `ciao-serve` command to start a simple HTTP server at
-`http://localhost:8000` with support for dynamic content (like the
-download component). It can be customized to listen from another
-address and port or be combined with other HTTP servers a reverse
-proxy (see Deployment instructions later).
+`http://localhost:8000` with support for dynamic content. It can be
+customized to listen from another address and port or be combined with
+other HTTP servers a reverse proxy (see Deployment instructions
+later).
 
 Data from the dynamic components of the website will be locally stored
 at the `CIAOROOT/build/data/` directory.
 
 ")).
 info(website,deps(lpdoc)).
-info(website,deps(wui)).
+info(website,deps(ciao_playground)).
 info(website,url('https://github.com/ciao-lang/website')).
 bundle(ciaopp_tests).
 info(ciaopp_tests,tags([])).
@@ -753,6 +847,54 @@ the original [paper][1] for a more detailed description (recovered from the
 ")).
 info(chat80,manuals(chat80,'chat80.html')).
 info(chat80,url('https://github.com/ciao-lang/chat80')).
+bundle(ciaowasm).
+info(ciaowasm,tags([])).
+info(ciaowasm,title("CiaoWasm - Ciao compiled to WebAssembly")).
+info(ciaowasm,desc("# CiaoWasm - Ciao compiled to WebAssembly
+
+This bundle provides a Ciao engine compiled to WebAssembly
+[Emscripten](https://emscripten.org/docs/getting_started/downloads.html).
+
+It also provides:
+
+ - The `wasm` build grade (see `src_builder/`), necessary to pack and
+   distribute bundles for this backend.
+
+ - A **high-level JS client** to the Ciao engine, which is able to run
+   queries and collect solutions. See `ciaowasm.pl` for internal
+   details.
+
+## Build
+
+Install and enable
+[Emscripten](https://emscripten.org/docs/getting_started/downloads.html)
+SDK (EMSDK). Then use the `build.sh` script to prepare a build. Build
+and installation will populate the `build/site/` directory at the
+current workspace.
+
+### Documentation of JavaScript bindings
+
+Documentation of JavaScript bindings is auto-generated using
+[JSDoc](https://jsdoc.app).
+
+```
+jsdoc -c Manifest/jsdoc-conf.json
+```
+
+The HTML documentation will be generated in the `doc-js/` folder.
+Install `jsdoc` with `npm install -g jsdoc` (or `npm install
+--save-dev jsdoc` locally).
+
+## Caveats
+
+ - Operations repending on blocking IO (like console interaction) are
+   not handled nicely in
+   Emscripten. [Asyncify](https://emscripten.org/docs/porting/asyncify.html)
+   may be considered as an option but we must study its impact on
+   performance (but it is written to be large and slow without `-O3`).
+")).
+info(ciaowasm,manuals(ciaowasm,'ciaowasm.html')).
+info(ciaowasm,url('https://github.com/ciao-lang/ciaowasm')).
 bundle(ciao_gui).
 info(ciao_gui,tags([])).
 info(ciao_gui,title("Launcher of Ciao GUI applications")).
