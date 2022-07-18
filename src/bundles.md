@@ -5,7 +5,7 @@
 {
   render_pred: 'bundles_dyn:render',
   state_hash: true,
-  depends: ['website', 'lpdoc'],
+  depends: ['ciaowasm', 'website', 'lpdoc'],
   on_init: ['use_module(catalog_ui(bundles_dyn))']
 }
 %! \end{dynpreview}

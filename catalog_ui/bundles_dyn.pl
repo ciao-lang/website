@@ -1,4 +1,4 @@
-:- module(_, [], [assertions, fsyntax, dcg, datafacts]).
+:- module(_, [], [assertions, fsyntax, dcg, datafacts, foreign_js]).
 
 % TODO: This is the experimental wasm version (work in progress)
 :- doc(title, "Catalog of Bundles (UI) (wasm version)").
@@ -12,8 +12,6 @@
 
 % ===========================================================================
 
-:- use_module(library(stream_utils), [write_string/1]).
-:- use_module(library(pillow/json), [json_to_string/2]).
 :- use_module(library(pillow/html), [html2terms/2]).
 
 :- use_module(library(streams)).
@@ -22,19 +20,19 @@
 
 :- data curr_id/1.
 
+dynpreview_render(Id, Str) :-
+    js_call(dynpreview_render(Id, string(Str))).
+%
+js_def(dynpreview_render("id", "str"), [], 
+    "window.dynpreview_render(id, str);").
+
 :- export(render/2).
 render(Id, State) :-
     set_fact(curr_id(Id)),
     %
     render_html(State, H, []),
-    display('$$$js_eval$$$:'), display('{'),
-    display('window.dynpreview_render('), display(Id), display(','), write_qhtml(H), display('); '),
-    display('}'), nl.
-
-write_qhtml(Html) :-
-    html2terms(Str, Html), % from html term to str
-    json_to_string(string(Str), Str2), % quote the string
-    write_string(Str2).
+    html2terms(Str, H), % from html term to str
+    dynpreview_render(Id, Str).
 
 dynpreview_visit(M) := Str :-
     curr_id(Id),
