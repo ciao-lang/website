@@ -33,9 +33,9 @@ You can browse the available bundles and their manuals in the
  - Some @href{http://clip.dia.fi.upm.es/~logalg/slides/E_ciao_cl2000_tut_all.pdf}{tutorial slides on
    Ciao features} (older, but still valid).
 
- - A @href{/ciao/build/doc/ciaopp.html/tut_quick_start.html}{quick tutorial on CiaoPP} and 
-   a @href{/ciao/build/doc/ciaopp.html/release_tutorial.html}{longer one}; an 
-   @href{http://clip.dia.fi.upm.es/papers/ciaopp-tutorial.pdf}{older tutorial} covering additional aspects.
+ - @href{/ciao/build/doc/ciaopp_tutorials.html/}{CiaoPP tutorials}
+   groups a number of interactive tutorials meant to help when
+   starting to use CiaoPP.
 
  - Other @href{http://clip.dia.fi.upm.es/papers/RuleML11_slides.pdf}{introductory slides on Ciao, CiaoPP}.
 
