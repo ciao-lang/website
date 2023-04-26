@@ -83,6 +83,7 @@ info(ciaopp,deps(ciaopp_bshare)).
 info(ciaopp,deps(ciaopp_llvm)).
 info(ciaopp,deps(davinci)).
 info(ciaopp,manuals(ciaopp,'ciaopp.html')).
+info(ciaopp,manuals(ciaopp_tutorials,'ciaopp_tutorials.html')).
 info(ciaopp,url('https://github.com/ciao-lang/ciaopp')).
 bundle(ciao_emacs).
 info(ciao_emacs,tags([main])).
@@ -122,8 +123,7 @@ info(ciao_playground,desc("# The Ciao Playground
 
 This bundle implements the Ciao Playground. It supports local
 (browser-side) execution of Ciao code based on `ciaowasm` and offers a
-code edition based on the [Monaco
-Editor](https://microsoft.github.io/monaco-editor/) component.
+code edition based on the [Monaco Editor](https://microsoft.github.io/monaco-editor/) component.
 
 `ciaowasm` is a Ciao engine compiled to the WebAssembly platform using
 [Emscripten](https://emscripten.org), together with a JavaScript
@@ -163,7 +163,7 @@ fault). The `ciao-serve-mt` module wraps a Python3 multi-threaded HTTP
 server (which seems to work properly) with a `ciao-serve`-like
 interface.
 
-> **NOTE**: When developing, it is sometimes convenient to [bypass your
+**NOTE**: When developing, it is sometimes convenient to [bypass your
 cache](https://en.wikipedia.org/wiki/Wikipedia:Bypass_your_cache).
 
 ## Documentation
@@ -744,6 +744,83 @@ $ ciao get ciao_gsl
 ")).
 info(ciao_gsl,deps(ciaomath)).
 info(ciao_gsl,url('https://github.com/ciao-lang/ciao_gsl')).
+bundle(deepfind).
+info(deepfind,tags([])).
+info(deepfind,title("Code search based on abstract interpretation")).
+info(deepfind,desc("# Code search based on abstract interpretation
+
+Deepfind is a bundle for the Ciao System which allows finding code in
+set of modules defined by the user by specifying abstract semantic
+characteristics of the arguments of the predicates.
+
+See the manual for more details.
+
+Note: this is work in progress (see TODO.md file)
+
+## Build and installation
+
+You can automatically fetch, build, and install this bundle using:
+
+```sh
+ciao get deepfind
+```
+
+This command stores the source and generates the binaries in the Ciao
+_workspace directory_. This directory is given by the value of the
+`CIAOPATH` environment variable (or `~/.ciao` if unspecified).
+
+Binaries are placed in the `$CIAOPATH/build/bin` directory (or
+`~/.ciao/build/bin`). To call a binary without specifying its full
+path it is recommended to include this directory in your `PATH`:
+
+```sh
+export PATH=$CIAOPATH/build/bin:$PATH
+# or export PATH=~/.ciao/build/bin:$PATH
+```
+
+**For developing** this bundle it is recommended to define `CIAOPATH`
+(E.g., `~/ciao`) and clone this repository in your workspace. Remember to 
+update registered bundles after cloning (E.g., `ciao rescan-bundles ~/ciao`).
+
+## Usage
+
+Usage:
+```ciao
+?- use_package(deepfind(deepfind)).
+```
+
+Selection of the search context:
+```ciao
+find_add_mod(<<path>>).% Add one module to the search
+find_add_dir(<<path>>). % (or) add one directory for search
+find_add_bundle(<<bundle name>>). % (or) add one bundle for search
+```
+
+To pre-analize the selected modules you may use:
+```ciao
+?- analyze_search_modules([]).
+```
+where the first argument are the options:
+     * `no_incremental`: redo analysis for all modules
+       (otherwise only those whose modification data has changed are
+        reanalized -- note that this heuristic is incomplete)
+
+Then:
+```ciao
+?- findp(Asrts, P, Residue, Status). % To enumerate predicates
+```
+
+Example:
+```ciao
+?- use_package(deepfind(deepfind)).
+?- analyze_search_modules([]). 
+?- findp({ :- pred P(A) => atm(A). }, Pred, Residue, Status). 
+?- findp({ :- apropos('.*'). }, Pred, Residue, Status).
+```
+")).
+info(deepfind,deps(ciaopp)).
+info(deepfind,manuals(deepfind,'deepfind.html')).
+info(deepfind,url('https://github.com/ciao-lang/deepfind')).
 bundle(alldocs).
 info(alldocs,tags([main])).
 info(alldocs,title("General Ciao documentation")).
@@ -881,7 +958,7 @@ Documentation of JavaScript bindings is auto-generated using
 jsdoc -c Manifest/jsdoc-conf.json
 ```
 
-The HTML documentation will be generated in the `doc-js/` folder.
+The HTML documentation will be generated in the `doc/js/` folder.
 Install `jsdoc` with `npm install -g jsdoc` (or `npm install
 --save-dev jsdoc` locally).
 
