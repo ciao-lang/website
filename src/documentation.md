@@ -22,42 +22,41 @@ The following are the reference manuals for the main Ciao components:
  - [lpdoc](/ciao/build/doc/lpdoc.html/): documentation generator.
  - [ciaopp](/ciao/build/doc/ciaopp.html/): analysis, verification, (static) debugging, and optimization.
  - [ciaodbg](/ciao/build/doc/ciaodbg.html/): testing, profiling, and (dynamic) embedded debugging.
+ - [ciao_playground](/ciao/build/doc/ciao_playground.html/): the Ciao playground
 
 You can browse the available bundles and their manuals in the
 **[bundle catalog](/bundles.html)**.
 
 # Some Tutorials and Presentations
 
- - An @href{http://clip.dia.fi.upm.es/papers/hermenegildo11:ciao-design-tplp.pdf}{overview paper} on Ciao.
+ - An [overview paper](http://clip.dia.fi.upm.es/papers/hermenegildo11:ciao-design-tplp.pdf) on Ciao.
 
- - Some @href{http://clip.dia.fi.upm.es/~logalg/slides/E_ciao_cl2000_tut_all.pdf}{tutorial slides on
-   Ciao features} (older, but still valid).
+ - Some [tutorial slides on Ciao features](http://clip.dia.fi.upm.es/~logalg/slides/E_ciao_cl2000_tut_all.pdf) (older, but still valid).
 
- - @href{/ciao/build/doc/ciaopp_tutorials.html/}{CiaoPP tutorials}
+ - [CiaoPP tutorials](/ciao/build/doc/ciaopp_tutorials.html/)
    groups a number of interactive tutorials meant to help when
    starting to use CiaoPP.
 
- - Other @href{http://clip.dia.fi.upm.es/papers/RuleML11_slides.pdf}{introductory slides on Ciao, CiaoPP}.
+ - Other [introductory slides on Ciao, CiaoPP](http://clip.dia.fi.upm.es/papers/RuleML11_slides.pdf).
 
- - Original @href{http://clip.dia.fi.upm.es/~logalg/slides/G_lpdoc_cl2000.pdf}{tutorial slides on LPdoc}.
+ - Original [tutorial slides on LPdoc](http://clip.dia.fi.upm.es/~logalg/slides/G_lpdoc_cl2000.pdf).
 
 # Forums and mailing lists
 
 The following forums and mailing lists are available:
 
- - @href{https://github.com/ciao-lang/ciao/discussions}{discussions at GitHub} (new!)
+ - [discussions at GitHub](https://github.com/ciao-lang/ciao/discussions) (new!)
 
- - @email{ciao-users@@cliplab.org} (@href{https://cliplab.org/Mail/ciao-users/}{archives})
+ - @email{ciao-users@@cliplab.org} ([archives](https://cliplab.org/Mail/ciao-users/))
 
    Ciao questions (in English) whose answer may be of general
    interest, announcements of relevant updates, bug fixes, etc.
 
-   You can
-   @href{https://cliplab.org/mailman/listinfo/ciao-users}{subscribe to this mailing list}.
+   You can [subscribe to this mailing list](https://cliplab.org/mailman/listinfo/ciao-users).
 
 # Publications
 
 The Ciao System incorporates decades of results in programming
 languages research. See our
-@href{http://clip.dia.fi.upm.es/~clip/clippubsbytopic/clippubsbytopic.html}{list of publications available on-line}
+[list of publications available on-line](http://clip.dia.fi.upm.es/~clip/clippubsbytopic/clippubsbytopic.html)
 and their references.
