@@ -18,19 +18,15 @@ repository.
 ## Installation
 
 This bundle requires a few additional steps to fetch external
-dependencies and prepare the website files under
-`CIAOROOT/build/site/` directory.
+dependencies, build `ciaowasm` and `ciao_playground` bundles, and
+prepare the website files under `CIAOROOT/build/site/` directory.
 
-First make sure that the `wui` bundle is built and installed:
-```
-ciao custom_run wui fetch_externals
-ciao build --bin wui
-ciao custom_run wui dist
-```
-Then build and install the website:
+You can build and install the website with:
 ```
 ciao custom_run website fetch_externals
 ciao build --bin website
+ciao build --grade=wasm website
+ciao install --grade=wasm website
 ciao custom_run website dist
 ```
 
@@ -38,24 +34,8 @@ NOTE: The metadata for the bundle catalog is pre-generated in the
 `cached_catalog.pl` file. Use `bundle_extra_info:gen_catalog` to
 generate it.
 
-## Serving the website (browser-side dynamic content)
+## Serving the website
 
-Use any HTTP server with root at `CIAOROOT/build/site/`. This requires
-additional steps to build `ciaowasm` and `ciao_playground` bundles.
-
-```
-ciao build --grade=wasm website
-ciao install --grade=wasm website
-```
-
-## Serving the website (server-side dynamic content)
-
-Use the `ciao-serve` command to start a simple HTTP server at
-`http://localhost:8000` with support for dynamic content. It can be
-customized to listen from another address and port or be combined with
-other HTTP servers a reverse proxy (see Deployment instructions
-later).
-
-Data from the dynamic components of the website will be locally stored
-at the `CIAOROOT/build/data/` directory.
-
+Use an HTTP server with multi-threading capabilities with root at
+`CIAOROOT/build/site/`. See the `README.md` at the `ciao_playground`
+for more details.
