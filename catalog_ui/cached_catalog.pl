@@ -74,7 +74,7 @@ are distributed as separate bundles.
 CiaoPP is distributed under the GNU general public license.
 ")).
 info(ciaopp,deps(ciaodbg)).
-info(ciaopp,deps(ciaotest)).
+info(ciaopp,deps(ciaopp_testgen)).
 info(ciaopp,deps(typeslib)).
 info(ciaopp,deps(ciao_ppl)).
 info(ciaopp,deps(ciao_gsl)).
