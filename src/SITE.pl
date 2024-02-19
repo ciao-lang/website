@@ -15,6 +15,7 @@
 
 :- use_module(library(bundle/bundle_paths), [bundle_path/3]).
 
+filepath := at_bundle(core, '..'). % (for INSTALLATION.md)
 filepath := ~bundle_path(website, 'src').
 %tmplpath := ~bundle_path(website, 'tmpl').
 
