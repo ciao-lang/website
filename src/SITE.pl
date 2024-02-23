@@ -39,7 +39,7 @@ docformat := html. % we are a webpage!
 
 % TODO: port this manual
 allow_markdown := yes.
-syntax_highlight := no.
+syntax_highlight := yes.
 allow_runnable := yes.
 
 % -----------------------------------------------------------------------------
