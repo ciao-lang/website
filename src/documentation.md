@@ -21,7 +21,6 @@ The following are the reference manuals for the main Ciao components:
  - [ciao_builder](/ciao/build/doc/ciao_builder.html/): build system.
  - [lpdoc](/ciao/build/doc/lpdoc.html/): documentation generator.
  - [ciaopp](/ciao/build/doc/ciaopp.html/): analysis, verification, (static) debugging, and optimization.
- - [ciaodbg_extra](/ciao/build/doc/ciaodbg_extra.html/): testing, profiling, and (dynamic) embedded debugging.
  - [ciao_playground](/ciao/build/doc/ciao_playground.html/): the Ciao playground
 
 You can browse the available bundles and their manuals in the

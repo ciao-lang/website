@@ -175,7 +175,6 @@ bundle_tags(devenv, [main]).
 bundle_tags(lpdoc, [main]).
 bundle_tags(ciaopp, [main]).
 bundle_tags(ciao_emacs, [main]).
-bundle_tags(ciaodbg_extra, [main]).
 bundle_tags(ciaofmt, [main]).
 bundle_tags(alldocs, [main]).
 
